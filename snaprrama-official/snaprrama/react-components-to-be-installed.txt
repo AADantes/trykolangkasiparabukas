@@ -1,0 +1,11 @@
+reinstall react: npm install
+react-redux: npm i react-redux
+react-router-dom : npm i react-router-dom
+axios : npm i axios
+------------------------------------------------
+font-awesome:
+                   
+1. npm i --save @fortawesome/fontawesome-svg-core
+2. npm i --save @fortawesome/free-solid-svg-icons, npm i --save @fortawesome/free-regular-svg-icons, npm i --save @fortawesome/free-brands-svg-icons
+3. npm i --save @fortawesome/react-fontawesome@latest
+                  

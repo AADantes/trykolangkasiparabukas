@@ -1,0 +1,82 @@
+.info1, .info2, .info3
+{
+    width: 1500px; /* Set the width and height to your desired size */
+    height: 550px;
+    margin-left: -100px;
+    margin-top: 50px;
+    background-color: rgb(59, 128, 69);
+    border-radius: 10px;;
+}
+
+
+.infoboxes
+{
+    display:flex;
+    flex-direction: column;
+
+}
+
+
+.info1message, .info2message, .info3message
+{
+
+    text-align: center;
+    margin-top: 200px;;
+    font-size: 20px;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+    
+}
+
+.info1pic, .info2pic, .info3pic
+{
+   background-blend-mode:overlay;
+}
+
+
+.info1
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.info2
+{
+    display:flex;
+    flex-direction: row-reverse;
+    justify-content: space-evenly;
+}
+
+.info3
+{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info3message
+{
+    margin-left: 5%;
+}
+
+.info1pic
+{
+        background: url('https://www.volusion.com/blog/content/images/2021/07/Photo-Shoot.jpg') no-repeat;
+        width:900px;
+        height:550px;
+
+}
+
+.info2pic
+{
+    background: url('https://media.licdn.com/dms/image/D5612AQFI9AdOcX8-KA/article-cover_image-shrink_720_1280/0/1684283539296?e=2147483647&v=beta&t=PZK0JEXvOVQHLcRFipBpUb5gwzaYN4M1RfTPBOfv3jo') no-repeat;
+    width:900px;
+    height:550px;
+}
+
+.info3pic
+{
+    background: url('https://ici.net.au/blog/wp-content/uploads/2019/06/shutterstock_500130301.jpg') no-repeat;
+    width:900px;
+    height:550px;   
+}
