@@ -52,9 +52,7 @@ const MainPage = () => {
     setPosts(posts.filter(post => post.id !== id));
   };
 
-  const handleAddWorkExperience = () => {
-   
-  };
+  
 
   const handleAddInformation = () => {
    
@@ -97,25 +95,17 @@ const MainPage = () => {
             />
             <button style={styles.postButton} onClick={handlePostSubmit}>Post</button>
           </div>
-          <div style={styles.postsDisplay}>
-            {posts.map((post) => (
-              <div key={post.id} style={styles.post}>
-                {post.title && <h3 style={styles.postTitle}>{post.title}</h3>}
-                {post.image && <img src={post.image} alt="Post" style={styles.postImage} />}
-                <p style={styles.postText}>{post.text}</p>
-              </div>
-            ))}
-          </div>
         </div>
         <div style={styles.lowerRightRectangle}>
           {posts.map((post) => (
             <div key={post.id} style={styles.lowerRightPost}>
               <button style={styles.removeButton} onClick={() => handleRemove(post.id)}>Remove Post</button>
               {post.image && <img src={post.image} alt="Post" style={styles.lowerRightImage} />}
-              <div style={styles.lowerRightTextContainer}>
-                {post.title && <h3 style={styles.lowerRightTitle}>{post.title}</h3>}
-                <p style={styles.lowerRightText}>{post.text}</p>
-              </div>
+              <textarea
+                readOnly
+                style={styles.outputTextBox}
+                value={`${post.title}\n${post.text}`}
+              />
               <div style={styles.likeContainer}>
                 <button style={styles.likeButton} onClick={() => handleLike(post.id)}>
                   <FontAwesomeIcon icon={faHeart} /> {}
@@ -153,8 +143,8 @@ const styles = {
 
   leftRectangle: {
     position: 'relative',
-    width: '30%',
-    height: '960px',
+    width: '460px',
+    height: '668px',
     borderRadius: '8px',
     backgroundColor: '#fff',
     boxSizing: 'border-box',
@@ -185,17 +175,7 @@ const styles = {
   },
 
 
-  addWorkExperienceButton: {
-    backgroundColor: '#007BFF',
-    color: 'white',
-    padding: '10px 20px',
-    borderRadius: '5px',
-    border: 'none',
-    cursor: 'pointer',
-    marginTop: '20px',
-    zIndex: 2
-  },
-
+ 
 
   addInformationButton: {
     backgroundColor: '#FF4500', 
@@ -213,8 +193,8 @@ const styles = {
     position: 'absolute',
     top: 25,
     right: 25,
-    width: '65%',
-    height: '480px',
+    width: '975px',
+    height: '240px',
     borderRadius: '8px',
     backgroundColor: '#fff',
     boxSizing: 'border-box',
@@ -229,8 +209,8 @@ const styles = {
     position: 'absolute',
     bottom: 25,
     right: 25,
-    width: '65%',
-    height: '360px',
+    width: '975px',
+    height: '400px',
     borderRadius: '8px',
     backgroundColor: '#fff',
     boxSizing: 'border-box',
@@ -381,6 +361,7 @@ const styles = {
     margin: 0,
     marginBottom: '5px',
     zIndex: 2
+    
   },
 
 
@@ -423,6 +404,20 @@ const styles = {
     position: 'absolute',
     top: '10px', 
     right: '10px' 
+  },
+
+  outputTextBox: {
+    width: '80%',
+    height: '85px',
+    borderRadius: 'none',
+    border: 'none',
+    padding: '10px',
+    boxSizing: 'border-box',
+    zIndex: 2,
+    resize: 'none',
+    overflow: 'hidden',
+    backgroundColor: '#fff',
+    color: '#000'
   }
 };
 

@@ -18,10 +18,11 @@ function App() {
           <Route path="/ratingpage" element={<RateSnappr />} />
           <Route path="/listpage" element={<SnapRank />} />
           <Route path="/menupage" element={<LoginRegister/>} />
+          <Route path="/login-successful/redirect-mainmenu" element={<MainPage/>} />
         </Routes>
       </BrowserRouter>
 
-
+    
 
 
 </div>
