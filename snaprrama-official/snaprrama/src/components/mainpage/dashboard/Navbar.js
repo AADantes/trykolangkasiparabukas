@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import logo from './snapprama.png';
 import { Link } from 'react-router-dom';
 
-<Link to="/loginpage"> Login </Link>
 
 
 const Navbar = () => {
@@ -32,7 +31,7 @@ const Navbar = () => {
 
          <div className="navbar-buttons">
 
-          <Link to= "/menupage">
+          <Link to= "/login-signup">
 
           <button className="login-button">Login</button>
           <button className="signup-button">Signup</button>

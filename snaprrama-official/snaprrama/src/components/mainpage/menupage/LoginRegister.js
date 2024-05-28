@@ -4,59 +4,103 @@ import { useDispatch } from 'react-redux';
 import { toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import http from '../../../http';
-import { addUsers } from '../../../redux/Actions/UserAction';
+import axios from 'axios';
+
+
 
 export default function LoginRegister() {
+
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const addUser = () => {
-        const newuser = {
-            username: username,
-            password: password,
-            email: email
-        };
 
-        http.post('register', newuser)
-            .then((response) => {
-                toast('User Added!', {
-                    position: "bottom-left",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    transition: Bounce,
-                });
-            })
-            .catch((error) => {
-                console.log(error.message);
-            });
-    };
-
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
-        if (username === 'admin' && password === '12345') {
-            navigate('/login-successful/redirect-mainmenu'); // or whatever route you want to navigate to
-        } else {
-            toast.error('Invalid login credentials', {
-                position: "bottom-left",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "light",
-                transition: Bounce,
+        try {
+          const response = await axios.post("http://localhost:8000/users/login", {
+            username,
+            password,
+          });
+          if (response.data) {
+            toast.success("Login successful!", {
+              position: "bottom-left",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
             });
+            navigate('/login-successful/redirect-mainmenu'); // or whatever route you want to navigate to
+          } else {
+            toast.error("Invalid login credentials", {
+              position: "bottom-left",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: true,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+              transition: Bounce,
+            });
+          }
+        } catch (error) {
+          console.error("Error during login:", error);
+          toast.error("An error occurred while logging in. Please try again.", {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
         }
-    };
+      };
+
+    const handleRegister = async (e) => {
+        e.preventDefault();
+        try {
+          await axios.post('http://localhost:8000/users/register', {
+            username,
+            password,
+            email,
+          });
+          toast.success('Registration successful! Please sign in.', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+          switchContent('login');
+        } catch (error) {
+          toast.error('Registration failed. Please try again.', {
+            position: "bottom-left",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+          });
+        }
+      };
 
     const switchContent = (action) => {
         const content = document.getElementById('content');
@@ -71,7 +115,7 @@ export default function LoginRegister() {
         <div className='loginpage'>
             <div className='content justify-content-center align-items-center d-flex shadow-lg' id='content'>
                 <div className='col-md-6 d-flex justify-content-center'>
-                    <form onSubmit={(e) => { e.preventDefault(); addUser(); }}>
+                    <form onSubmit={(e) => { e.preventDefault(); }}>
                         <div className='header-text mb-4'>
                             <h1>Create Account</h1>
                         </div>
@@ -100,7 +144,7 @@ export default function LoginRegister() {
                             </input>
                         </div>
                         <div className='input-group mb-3 justify-content-center'>
-                            <button type='submit' className='btn-border-white text-white w-50 h=30'> Register </button>
+                            <button type='submit' className='btn-border-white text-white w-50 h=30' onClick={handleRegister}> Register </button>
                         </div>
                     </form>
                 </div>
@@ -126,7 +170,7 @@ export default function LoginRegister() {
                             </input>
                         </div>
                         <div className='input-group mb-3 justify-content-center'>
-                            <button type='submit' className='btn-border-white text-white w-50 fs-6'> Login </button>
+                            <button type='submit' className='btn-border-white text-white w-50 fs-6'onClick={handleLogin}> Login </button>
                         </div>
                     </form>
                 </div>
@@ -135,12 +179,12 @@ export default function LoginRegister() {
                         <div className='switch-panel switch-left'>
                             <h1>Welcome to Snaprrama!</h1>
                             <p>Want to be our newest member? Register now!</p>
-                            <button className='hidden btn text-white w-50 fs-6' onClick={() => switchContent('login')}>Login</button>
+                            <button className='buttonsliding' onClick={() => switchContent('login')}>Login</button>
                         </div>
                         <div className='switch-panel switch-right'>
                             <h1>Welcome back to Snaprrama!</h1>
                             <p>Enter your credentials to sign in!</p>
-                            <button className='hidden btn text-white w-50 fs-6' onClick={() => switchContent('register')}>Register</button>
+                            <button className='buttonsliding' onClick={() => switchContent('register')}>Register</button>
                         </div>
                     </div>
                 </div>

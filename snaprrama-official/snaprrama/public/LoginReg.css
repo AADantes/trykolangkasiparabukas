@@ -115,3 +115,7 @@
 {
   transform: translateX(0);
 }
+
+.buttonsliding{
+  border: 2px solid black;
+}
