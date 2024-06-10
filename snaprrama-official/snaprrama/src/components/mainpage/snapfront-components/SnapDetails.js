@@ -5,61 +5,25 @@ export default function SnapDetails() {
   return (
     <div className='detailcontainer'>
 
-<div className="container">
-      <div className="row">
-        <div className="col-12 mb-3">
-          <div className="info1 ">
-            <div className='info1message'>
+        <div className='detailbody'>
 
-              <h1> Inquire Media services!</h1>
-              <p> This is your place to find talented people who will offer their services for your media services needs!</p>
-
+        <div className='detailtitlecontainer'>
+            <h1 className='detailtitle'>Welcome to Snaprrama!</h1>
             </div>
-            {/* .................................................................................. */}
-            <div className='info1pic'>
-
-
+              
+            <div className='detailscontainer'>
+            <p className='detail1'> Create Commissions for Media Services!</p>
+            <p className='detail2'> Promote your Media Service Business!</p>
+            <p className='detail3'> Be and active part of the Media Service Community!</p>
             </div>
-            {/* .................................................................................. */}
-          </div>
+
+            <div className='convincedetail'>
+            <p className='detail4'> Sign Up and Join us now!</p>
+            </div>
+
         </div>
 
-            {/* .................................................................................. */}  
-
-
-        <div className="col-12 mb-3">
-          <div className="info2">
-            <div className='info2message'>
-
-              <h1> Promote your Talent in Photography and Videography!</h1>
-              <p> Are you an aspiring Photographer/Videographer? Want to promote your media services business? Snaprrama's got your back!</p>
-
-              </div>
-              {/* .................................................................................. */}
-              <div className='info2pic'>
-
-
-                </div>
-          </div>
-        </div>
-        <div className="col-12 mb-3">
-          <div className="info3">
-          <div className='info3message'>
-
-          <h1> Improve your skills!</h1>
-          <p> Gather feedbacks and ratings of your works from other users!</p>
-
-</div>
-{/* .................................................................................. */}
-<div className='info3pic'>
-
-
-  </div>
-          </div>
-        </div>
- 
-      </div>
-    </div>
+          
 
     </div>
     

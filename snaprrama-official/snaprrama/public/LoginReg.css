@@ -117,5 +117,6 @@
 }
 
 .buttonsliding{
-  border: 2px solid black;
+  border: 2px solid black !important;
+  background-color:rgb(5, 141, 1) !important;
 }

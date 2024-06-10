@@ -6,11 +6,16 @@ import RateSnappr from './components/ratingpage/RateSnappr';
 import './App.css';
 import MainPage from './components/mainpage/snapmainmenu/MainPage';
 import LoginRegisterPage from './components/mainpage/menupage/LoginRegisterPage';
+import { Helmet } from 'react-helmet';
 
 function App() {
   return (
+    
     <div className="Main">
-
+      <Helmet>
+        <title>Snaprrama</title>
+        <link rel="icon" type="image/png" href="/favicon.png" />
+      </Helmet>
 
       <BrowserRouter basename="/">
         <Routes>
@@ -23,7 +28,7 @@ function App() {
       </BrowserRouter>
 
     
-
+      
 
 </div>
       

@@ -19,10 +19,10 @@ export async function getUsers() {
 
 }
 
-export async function getUserProfile() {
+export async function showCommissions() {
 
-    const [userprofle] = await pool.query("SELECT * FROM userprofile")
-    return userprofile;
+  const [users] = await pool.query("SELECT * FROM commissions")
+  return users;
 
 }
 
@@ -45,7 +45,7 @@ export async function getSingleUserProfile(UserID) {
 
     const [singleuser] = await pool.query( 
     `SELECT *
-    FROM userprofile
+    FROM users
     WHERE UserID = ?`
     , [UserID])
     return singleuser;
@@ -53,23 +53,15 @@ export async function getSingleUserProfile(UserID) {
 
 }
 
-export async function registerUser(username, password, email) {
+export async function registerUser(username, password, bio, email) {
     try {
 
         const [reguser] = await pool.query(
-          `INSERT INTO users (username, password, email) VALUES (?, ?, ?)`,
-          [username, password, email]
+          `INSERT INTO users (username, password, bio, email) VALUES (?, ?, ?, ?)`,
+          [username, password, bio, email]
         );
     
         const userId = reguser.insertId;
-
-        const defaultImage = fs.readFileSync('../snaprrama/src/components/images/default-snaprr.png');
-        const imageBuffer = Buffer.from(defaultImage, 'binary');
-    
-        await pool.query(
-          `INSERT INTO userprofile (username, address, email, bio, UserID) VALUES (?, ?, ?, ?, ?)`,
-          [username, null, email, null, imageBuffer]
-        );
     
         return getSingleUserProfile(userId);
       } catch (error) {
@@ -78,25 +70,101 @@ export async function registerUser(username, password, email) {
       }
   }
 
-
-export async function createUserProfile (username, address, email, bio) {
-
-
-    const [reguser] = await pool.query( 
-    `INSERT INTO userprofile (username, password, email)
-    values (?, ?, ?, ?)`
-    , [username, address, email, bio])   
-    const id = reguser.insertId
-    return getSingleUser(id);
-
-}
-
-export async function authenticateUser(username, password) {
+  export async function addBio(bio) {
     try {
-        const [rows] = await pool.query('SELECT * FROM users WHERE username = ? AND password = ?', [username, password]);
-        return rows.length > 0 ? rows[0] : null;
-    } catch (error) {
-        console.error('Error during authentication:', error);
+
+        const [reguser] = await pool.query(
+          `INSERT INTO users (bio) VALUES (?)`,
+          [bio]
+        );
+    
+        const userId = reguser.insertId;
+    
+        return getSingleUserProfile(userId);
+      } catch (error) {
+        console.error('Error in adding :', error);
         throw error;
+      }
+  }
+
+  export async function PostCommission(username, title, content, potentialpayment, status ) {
+    try {
+      const [post] = await pool.query(
+        `INSERT INTO commissions (username, title, content, potentialpayment, status) VALUES (?, ?, ?, ?, ?)`,
+        [username, title, content, potentialpayment, status]
+      );
+      return post;
+    } catch (error) {
+      console.error('Error creating post:', error);
+      throw error;
     }
+  }
+
+  export async function AcceptCommission(commissionID, status, acceptedBy) {
+    try {
+      const [result] = await pool.query(
+        `UPDATE commissions SET status =?, acceptedBy =? WHERE comissionID =?`,
+        [status, acceptedBy, commissionID]
+      );
+      return result;
+    } catch (error) {
+      console.error('Error accepting post:', error);
+      throw error;
+    }
+  }
+
+
+
+  let loggedInUser = null;
+
+  export async function authenticateUser(username, password) {
+    try {
+      const [rows] = await pool.query('SELECT * FROM users WHERE username =? AND password =?', [username, password]);
+      const user = rows.length > 0? rows[0] : null;
+      if (user) {
+        loggedInUser = user;
+      }
+      return user;
+    } catch (error) {
+      console.error('Error during authentication:', error);
+      throw error;
+    }
+  }
+  
+  export function getLoggedInUser() {
+    return loggedInUser;
+  }
+  
+  export function getLoggedInUsername() {
+    return loggedInUser? loggedInUser.username : null;
+  }
+  
+  export function getLoggedInUserId() {
+    return loggedInUser? loggedInUser.id : null;
+  }
+
+
+
+export async function calculateRating(category1, category2, category3) {
+  try {
+    // Calculate the weighted scores
+    const score1 = category1 * 1.15;
+    const score2 = category2 * 0.95;
+    const score3 = category3 * 0.90;
+
+    // Calculate the total score
+    const totalScore = (score1 + score2 + score3) / 3;
+
+    // Return an object with both total score and individual scores
+    return {
+      totalScore,
+      scores: [score1, score2, score3]
+    };
+  } catch (error) {
+    console.error('Error calculating rating:', error);
+    throw error;
+  }
 }
+
+
+

@@ -1,8 +1,763 @@
-.mainbg
-{
-  background-image: url("https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2Fmeh-the-patch-wasnt-that-big-abaddon-v0-nrj8bkgfim2d1.png%3Fauto%3Dwebp%26s%3Dbc939bf5de9bd5f8b02efd4fb804f5b81f125d54");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+.container {
+display: flex;
+flex-direction: row;
+margin-right:1000px;
+padding:0;
 }
 
+
+.maincontainer {
+
+}
+
+.maincontainerright {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height:80vh;
+  width:100vw;
+
+}
+
+
+.userProfile {
+  text-align: center;
+}
+
+
+.profilePicture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+
+.leftRectangle {
+  position: relative;
+  top: 45px;
+  width: 460px;
+  height: 730px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  margin-right: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  
+}
+
+
+.upperRightRectangle {
+  position: relative;
+  top: 10px;
+  width: 975px;
+  height: 240px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
+.lowerRightRectangle {
+  bottom: 25px;
+  width: 975px;
+  height: 400px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  overflow-y: auto;
+  padding: 10px;
+}
+
+
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+
+.titleInput {
+  width: calc(100% - 1px);
+  height: 40px;
+  font-weight: bold;
+  border-radius: 5px;
+  border: 2.5px solid rgb(0, 0, 0);
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  z-index: 2;
+}
+
+
+.postInput {
+  width: calc(100% - 1px);
+  height: 100px;
+  border-radius: 5px;
+  border: 2.5px solid rgb(5, 5, 5);
+  padding: 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  z-index: 2;
+  resize: none;
+}
+
+
+.fileInput {
+  margin-bottom: 10px;
+  z-index: 2;
+}
+
+
+.postButton {
+  position: absolute;
+  bottom: 10px;
+  right: 25px;
+  align-self: flex-end;
+  background-color: green;
+  color: white;
+  padding: 10px 35px;
+  border-radius: 30px;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 10px;
+  z-index: 2;
+  font-weight: bold;
+ 
+}
+
+
+ .postButton:hover {
+    background-color: #004d00; 
+  }
+
+
+.postsDisplay {
+  margin-top: 20px;
+  max-height: 100px;
+  overflow-y: auto;
+}
+
+
+.post {
+  position: relative;
+  background-color: #666;
+  padding: 10px;
+  border-radius: 5px;
+  border: 2.5px solid grey;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+
+.postTitle {
+  margin: 0;
+  margin-bottom: 10px;
+  color: white;
+  z-index: 2;
+}
+
+
+.postText {
+  margin: 0;
+  z-index: 2;
+}
+
+
+.lowerRightPost {
+  background-color: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  border: 2.5px solid rgb(0, 0, 0);
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding-bottom: 25px; 
+}
+
+
+.lowerRightTextContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+
+.lowerRightText {
+  margin: 0;
+  z-index: 2;
+}
+
+
+.lowerRightTitle {
+  margin: 0;
+  margin-bottom: 5px;
+  z-index: 2;
+}
+
+
+.lowerRightText {
+  margin: 0;
+  z-index: 2;
+}
+
+
+.likeContainer {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  z-index: 2;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+
+.removeButton {
+  background-color: green;
+  color: rgb(255, 255, 255);
+  padding: 7px 23px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+
+.removeButton:hover {
+  background-color: darkgreen; 
+}
+
+
+.outputTextBox {
+  width: 85%;
+  height: 100px;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+  z-index: 2;
+  resize: none;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #000;
+  font-weight: bold;
+  line-height: 1.8;
+  outline: none; 
+}
+
+
+.viewCommissionButton {
+  background-color: green;
+  color: white;
+  padding: 7px 10px;
+  border-radius: 10px;
+  border: none;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+}
+
+
+.viewCommissionButton:hover {
+  background-color: darkgreen; 
+}  
+
+
+.popupOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  visibility: hidden;
+}
+
+
+.popupContent {
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 10px;
+  width: 850px;
+  max-width: 80%;
+  text-align: center;
+}
+
+
+.showPopup {
+  visibility: visible;
+}
+
+
+.closePopupButton {
+  background-color: green;
+  color: white;
+  padding: 10px 40px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.closePopupButton:hover {
+  background-color: darkgreen; 
+}  
+
+
+.popupPost {
+  background-color: #ffffff;
+  padding: 10px;
+  border-radius: 10px;
+  border: 2.5px solid grey;
+  margin-bottom: 10px;
+  color: rgb(0, 0, 0);
+  text-align: left;
+}
+
+
+.commissionDetails {
+  color: #154734;
+}
+
+
+.priceInput {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  width: 250px;
+  border: 2.5px solid rgb(0, 0, 0);
+  height: 25px;
+  border-radius: 5px;
+}
+
+
+.noPostsMessage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  font-size: 24px;
+  color: #666;
+  font-weight: bold;
+}
+
+
+.profilePopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 325px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+  z-index: 9999; 
+}
+
+.profileContent {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  position: relative;
+  
+}
+
+
+.profileButton {
+  width: 100%;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+
+.chooseProfileButton {
+  background-color: green;
+  color: #fff;
+  margin-bottom: 13px;
+  height: 15px;
+  width: 87%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+
+.chooseProfileButton:hover {
+  background-color: darkgreen;
+}
+
+
+.deleteProfileButton {
+  background-color: green;
+  color: #fff;
+  margin-top: 10px;
+  height: 45px;
+  width: 100%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
+
+
+.deleteProfileButton:hover {
+  background-color: darkgreen;
+}
+
+
+.accountText {
+  color: darkgreen; 
+  font-size: 35px; 
+  margin-bottom: 20px; 
+  position: absolute;
+  top: 10px;
+}
+
+
+.addStatusButton {
+  background-color: green;
+  color: #fff; 
+  padding: 10px 30px; 
+  border: none; 
+  border-radius: 20px; 
+  cursor: pointer; 
+  font-size: 16px; 
+  margin-top: 10px; 
+  font-weight: bold;
+  position: absolute;
+  bottom: 80px;
+  left: 150px;
+}
+
+
+.addStatusButton:hover {
+  background-color: #004d00; 
+}
+
+
+.statusPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 20px;
+  width: 500px; 
+  z-index: 1000;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+ 
+}
+
+
+.statusContent {
+  text-align: center;
+}
+
+
+.statusInput {
+  width: 100%;
+  height: 100px;
+  border: 2px solid #000000;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  resize: none;
+  height: 10px;
+  width: 470px; 
+  overflow: hidden;
+}
+
+
+.statusButtons {
+  display: flex;
+  justify-content: center;
+}
+
+
+.statusButton,
+.deleteStatusButton {
+  background-color: #006400;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;  
+  margin: 0 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+.statusButton:hover,
+.deleteStatusButton:hover {
+  background-color: #004d00;
+}
+
+
+.paymentPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  width: 500px;
+  height: 200px ;
+  z-index: 1000;
+  box-shadow: 0px 0px 50px rgba(0, 0, 0, 0.5);
+}
+
+
+.paymentContent {
+  text-align: center;
+}
+
+
+.closePaymentButton {
+  position: absolute;
+  bottom: 20px;
+  right: 10px;
+   border-radius: 10px !important;
+  padding: 10px 30px !important;
+}
+
+
+
+.closePaymentButton:hover {
+  background-color: darkgreen;
+}
+
+
+.paymentInput {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+.paymentButton {
+  position: absolute;
+  bottom: 20px;
+  left: 10px;
+  background-color: green;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-top: 10px; 
+  cursor: pointer;
+  width: 150px;
+  border-radius: 5px;
+  
+}
+
+
+.paymentButton:hover {
+  background-color: darkgreen; 
+}
+
+
+.paymentButtons {
+  display: flex;
+  justify-content: center;
+}
+
+
+.paymentButton
+ {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+  font-weight: bold;
+  width: 500px;
+}
+
+.closePaymentButton
+{
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 0 10px;
+  font-weight: bold;
+}
+
+
+.paymentButton:hover,
+.closePaymentButton:hover {
+  background-color: darkgreen;
+}
+
+
+.addQrCodeButton {
+  position: absolute;
+  left: 187px;
+  bottom: 20px;
+  background-color: green; 
+  border: none;
+  color: white;
+  padding: 5px 40px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 10px; 
+  border-radius: 10px;
+}
+
+
+.addQrCodeButton:hover {
+  background-color: darkgreen;
+} 
+
+
+.savePaymentButton{
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  background-color: green; 
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  margin-right: 10px; 
+  border-radius: 10px;
+}
+
+
+.qrCodeContainer {
+  margin-top: 20px; 
+  text-align: center; 
+}
+
+
+.qrCodeImage {
+  width: 150px; 
+  height: 150px; 
+  margin-top: 15px; 
+  border-radius: 10px;
+}
+
+
+.rectangleShape {
+  width: 450px; 
+  height: 190px; 
+  background-color: #f0f0f0; 
+  position: absolute;
+  top: 295px; 
+  left: 250px; 
+  transform: translate(-50%, -50%); 
+  z-index: -1; 
+  border-radius: 5px;
+}
+
+.viewPaymentDetailsButton {
+  background-color: green;
+  color: white;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-right: 20px; 
+  font-weight: bold;
+}
+
+.viewPaymentDetailsButton:hover {
+  background-color: darkgreen;
+}
+
+.paymentDetailsPopup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: white;
+  padding: 20px;
+  border: 2px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 9999; /* Set a high z-index value */
+}
+
+.paymentDetailsContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.closePaymentDetailsButton {
+  margin-top: 20px;
+  padding: 10px 30px;
+  background-color: green;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.mainbg
+{
+  display:flex;
+  flex-direction: column;
+
+  
+  height:100vh;
+  width:100%;
+  background: #006400; 
+}

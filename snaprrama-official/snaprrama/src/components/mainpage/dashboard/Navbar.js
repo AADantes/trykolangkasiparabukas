@@ -30,13 +30,15 @@ const Navbar = () => {
       <div className={`navbar-links ${isOpen ? 'open' : ''}`}>
 
          <div className="navbar-buttons">
+            <div className='thebuttons'>
+            <Link to= "/login-signup">
 
-          <Link to= "/login-signup">
+<button className="login-button">Login</button>
+<button className="signup-button">Signup</button>
 
-          <button className="login-button">Login</button>
-          <button className="signup-button">Signup</button>
+</Link>
+            </div>
 
-          </Link>
 
           
         </div>

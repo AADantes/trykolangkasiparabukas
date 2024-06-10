@@ -128,7 +128,7 @@ export default function LoginRegister() {
                             </input>
                         </div>
                         <div className='input-group mb-3'>
-                            <input type='text'
+                            <input type='password'
                                 placeholder='Password'
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
@@ -162,7 +162,7 @@ export default function LoginRegister() {
                             </input>
                         </div>
                         <div className='input-group mb-3'>
-                            <input type='text'
+                            <input type='password'
                                 placeholder='Password'
                                 value={password}
                                 onChange={e => setPassword(e.target.value)}
