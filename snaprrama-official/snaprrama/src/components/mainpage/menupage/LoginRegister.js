@@ -37,7 +37,7 @@ export default function LoginRegister() {
               theme: "light",
               transition: Bounce,
             });
-            navigate('/login-successful/redirect-mainmenu'); // or whatever route you want to navigate to
+            navigate('/login-successful/redirect-mainmenu'); 
           } else {
             toast.error("Invalid login credentials", {
               position: "bottom-left",

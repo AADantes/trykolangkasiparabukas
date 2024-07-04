@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors';
-import { getUsers, getSingleUser,registerUser, authenticateUser, PostCommission, addBio, showCommissions, getLoggedInUserId, AcceptCommission } from './database.js'
+import { getUsers, getSingleUserByUsername  ,registerUser, authenticateUser, PostCommission, addBio, showCommissions, getLoggedInUserId, AcceptCommission, searchUsers } from './database.js'
 
 
 const app = express()
@@ -21,6 +21,19 @@ app.get("/users", async (req, res) =>{
 
 })
 
+app.get('/search', async (req, res) => {
+  console.log(req.query);
+  try {
+    const results = await searchUsers(req.query);
+    res.json(results);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error searching for usernames' });
+  }
+});
+
+
+
 app.get("/commissions", async (req, res) =>{
 
   const commissions = await showCommissions()
@@ -28,22 +41,22 @@ app.get("/commissions", async (req, res) =>{
 
 })
 
-app.get('/userid', async (req, res) => {
-  const userId = getLoggedInUserId();
-  if (userId) {
-    res.status(200).json({ userId });
-  } else {
-    res.status(401).json({ error: 'Unauthorized' });
+app.get("/usersearch/", async (req, res) => {
+  const username = req.query.username;
+  if (!username) {
+    return res.status(400).json({ error: 'Username is required' });
+  }
+  try {
+    const users = await getUsersByUsername(username); 
+    if (!users || users.length === 0) {
+      return res.status(404).json({ error: 'Users not found' });
+    }
+    res.json({ users });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
   }
 });
-
-app.get("/users/:id", async (req, res) =>{
-
-    const id = req.params.id
-    const user = await getSingleUser(id) 
-    res.send(user)
-
-})
 
 
 app.post("/users/register", async (req, res) =>
@@ -156,6 +169,16 @@ app.post("/users/register", async (req, res) =>
         } catch (error) {
           console.error('Error calculating rating:', error);
           res.status(500).json({ error: 'Error calculating rating' });
+        }
+      });
+
+      app.delete("/commissions/:id", async (req, res) => {
+        const { id } = req.params;
+        try {
+          await deleteCommission(id);
+          res.status(204).send();
+        } catch (error) {
+          res.status(500).json({ error: 'Failed to delete commission' });
         }
       });
 

@@ -166,4 +166,9 @@
         cursor: pointer;
         z-index: 1100;
     }
+
+    .search-input
+    {
+        border-radius: 20px;
+    }
 }

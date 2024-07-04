@@ -27,18 +27,28 @@ export async function showCommissions() {
 }
 
 
-export async function getSingleUser(UserID) {
-
-
-    const [singleuser] = await pool.query( 
+export async function getSingleUserByUsername(username) {
+  const [user] = await pool.query(
     `SELECT *
     FROM users
-    WHERE UserID = ?`
-    , [UserID])
-    return singleuser;
-
-
+    WHERE username = ?`,
+    [username]
+  );
+  return user ? user : null; 
 }
+
+
+export async function searchUsers(input) {
+  try {
+    const query = `SELECT username FROM users WHERE username LIKE '%${input.username}%'`;
+    const [results] = await pool.query(query);
+    return results;
+  } catch (err) {
+    console.error(err);
+    throw new Error('Error searching for usernames');
+  }
+}
+
 
 export async function getSingleUserProfile(UserID) {
 

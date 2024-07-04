@@ -47,9 +47,6 @@ console.log('Total Score:', calculateTotalScore());
 
   return (
     <div className='ratinginput'>
-      
-
-      <input type="text" placeholder="Enter Snappr" onChange={(e) => setSnappr(e.target.value)}/>  
 
       <Stargroup1 setScore={setScore1}/>
       <Stargroup2 setScore={setScore2}/>

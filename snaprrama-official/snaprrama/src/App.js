@@ -7,6 +7,8 @@ import './App.css';
 import MainPage from './components/mainpage/snapmainmenu/MainPage';
 import LoginRegisterPage from './components/mainpage/menupage/LoginRegisterPage';
 import { Helmet } from 'react-helmet';
+import Searchpage from './components/searchpage/Searchpage';
+import Profilepage from './components/profilepage/Profilepage';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/listpage" element={<SnapRank />} />
           <Route path="/login-signup" element={<LoginRegisterPage/>} />
           <Route path="/login-successful/redirect-mainmenu" element={<MainPage/>} />
+          <Route path="/search-user" element={<Searchpage/>} />
+          <Route path="/selected-user" element={<Profilepage/>} />  
         </Routes>
       </BrowserRouter>
 
